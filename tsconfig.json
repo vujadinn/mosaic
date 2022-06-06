@@ -16,6 +16,11 @@
     "incremental": true,
     "sourceMap": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "__mocks__/api-service.test.js"
+  ],
   "exclude": ["node_modules"]
 }

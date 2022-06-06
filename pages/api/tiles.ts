@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { MosaicTile, PrismaClient } from '@prisma/client'
-import type { NextApiRequest, NextApiResponse } from 'next'
+import { MosaicTile, PrismaClient } from "@prisma/client";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
   req: NextApiRequest,
@@ -8,21 +8,22 @@ export default async function handler(
 ) {
   const prisma = new PrismaClient();
 
-  if (req.method === 'POST') {
-    const body = JSON.parse(req.body)
+  if (req.method === "POST") {
+    const body = JSON.parse(req.body);
+    console.log("body,", body);
     await prisma.mosaicTile.update({
       where: {
         x_y: {
           x: body.x,
-          y: body.y
-        }
+          y: body.y,
+        },
       },
       data: {
         x: body.x,
         y: body.y,
         color: body.color,
       },
-    })
+    });
   }
 
   const tiles = await prisma.mosaicTile.findMany({});
